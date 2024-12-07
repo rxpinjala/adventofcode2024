@@ -3,11 +3,11 @@ body {
     height: 100vh;
 }
 
-#nav {
+#nav-list {
     background-color: #f0f0f0;
     min-width: 200px;
 }
 
-#app {
-    background-color: #ffffff;
+#input-controls {
+    display: flex;
 }

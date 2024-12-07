@@ -2,15 +2,22 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css" />
-        <script src="https://cdn.jsdelivr.net/npm/lodash@4/lodash.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4/lodash.min.js" integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous"></script>
         <script src="main.js" type="module"></script>
     </head>
     <body>
         <div id="nav">
-            <ul id="nav-list">
-                <li>Test</li>
-            </ul>
+            <form id="nav-list">
+            </form>
         </div>
-        <div id="app"></div>
+        <div id="input">
+            <div id="input-controls">
+                <span>Input:</span>
+                <input type="button" id="run-button" value="Run!" />
+            </div>
+            <textarea id="input-text" cols="60" rows="40"></textarea>
+        </div>
+        <div id="output">
+        </div>
     </body>
 </html>
