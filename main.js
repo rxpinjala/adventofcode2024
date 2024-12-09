@@ -1,5 +1,6 @@
 // @ts-check
 import { day1a, day1b } from "./day1.js";
+import { day2a, day2b } from "./day2.js";
 
 /**
  * @param {string} id 
@@ -25,13 +26,15 @@ const runButton = requireElementById('run-button');
  * @property {string} name
  * @property {string} default_input
  * @property {function()} run_func
- * @property {function()} test_func
+ * @property {function()[]} tests
  * 
  * @type {NavItem[]}
  */
 const navItems = {
     "day1a": day1a,
     "day1b": day1b,
+    "day2a": day2a,
+    "day2b": day2b,
 };
 
 function getSelectedNavItem() {
@@ -94,3 +97,12 @@ runButton.addEventListener('click', function (event) {
     const navItem = navItems[selectedItem];
     navItem.run_func(inputText.value, outputDiv);
 });
+
+// Run tests
+for (const navItem in navItems) {
+    for (const test_func of navItems[navItem].tests) {
+        const func_name = test_func.name;
+        console.log(`Running test: ${func_name}`);
+        test_func();
+    }
+}

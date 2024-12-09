@@ -137,12 +137,12 @@ export const day1a = {
     name: "Day 1a",
     default_input: provided_test_input,
     run_func: run_day1a,
-    test_func: test_day1a,
+    tests: [test_day1a],
 };
 
 export const day1b = {
     name: "Day 1b",
     default_input: provided_test_input,
     run_func: run_day1b,
-    test_func: test_day1b,
+    tests: [test_day1b],
 };
