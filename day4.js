@@ -71,6 +71,55 @@ function run_day4a(input, outputDiv) {
     outputDiv.innerText = `Result: ${result}`;
 }
 
+function is_x_mas(haystack, y, x) {
+    if (haystack[y][x] != 'A') {
+        return false;
+    }
+
+    // Can we access adjacent positions?
+    if (!is_valid_coord(haystack, y-1, x-1) ||
+        !is_valid_coord(haystack, y+1, x-1) ||
+        !is_valid_coord(haystack, y+1, x+1) ||
+        !is_valid_coord(haystack, y-1, x+1)) {
+        return false;
+    }
+
+    // Go around the circle of diagonal letters twice
+    // If we find the pattern "MMSS", that means that we have an M across from an S in both directions
+    const chars = [
+        haystack[y-1][x-1],
+        haystack[y-1][x+1],
+        haystack[y+1][x+1],
+        haystack[y+1][x-1],
+        haystack[y-1][x-1],
+        haystack[y-1][x+1],
+        haystack[y+1][x+1],
+    ].join("");
+    const result = chars.includes("MMSS");
+    return result;
+}
+
+function count_x_mas(input) {
+    // Split into lines
+    const haystack = input.split("\n");
+
+    let count = 0;
+    for (let y = 0; y < haystack.length; y++) {
+        for (let x = 0; x < haystack[y].length; x++) {
+            if (is_x_mas(haystack, y, x)) {
+                count++;
+            }
+        }
+    }
+
+    return count;
+}
+
+function run_day4b(input, outputDiv) {
+    const result = count_x_mas(input);
+    outputDiv.innerText = `Result: ${result}`;
+}
+
 const provided_test_input = 
 `
 MMMSXXMASM
@@ -86,10 +135,13 @@ MXMXAXMASX
 `.trim();
 
 function test_day4a() {
-    console.assert(count_word(provided_test_input.split("\n"), 9, 3, -1, -1, "XMAS") === 1);
-
     const result = count_words(provided_test_input, "XMAS");
     console.assert(result === 18);
+}
+
+function test_day4b() {
+    const result = count_x_mas(provided_test_input);
+    console.assert(result === 9);
 }
 
 export const day4a = {
@@ -97,4 +149,11 @@ export const day4a = {
     default_input: provided_test_input,
     run_func: run_day4a,
     tests: [test_day4a],
+};
+
+export const day4b = {
+    name: "Day 4b",
+    default_input: provided_test_input,
+    run_func: run_day4b,
+    tests: [test_day4b],
 }
