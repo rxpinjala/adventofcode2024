@@ -1,6 +1,8 @@
 // @ts-check
 import { day1a, day1b } from "./day1.js";
 import { day2a, day2b } from "./day2.js";
+import { day3a, day3b } from "./day3.js";
+import { day4a } from "./day4.js";
 
 /**
  * @param {string} id 
@@ -35,6 +37,9 @@ const navItems = {
     "day1b": day1b,
     "day2a": day2a,
     "day2b": day2b,
+    "day3a": day3a,
+    "day3b": day3b,
+    "day4a": day4a,
 };
 
 function getSelectedNavItem() {
