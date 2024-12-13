@@ -41,7 +41,7 @@ function count_word(haystack, y, x, dy, dx, needle) {
         }
     }
 
-    console.log(`Found ${needle} at (${y}, ${x})(${dy}, ${dx})`);
+    //console.log(`Found ${needle} at (${y}, ${x})(${dy}, ${dx})`);
     return 1;
 }
 
